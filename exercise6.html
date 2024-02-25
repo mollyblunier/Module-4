@@ -33,7 +33,7 @@ axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
 .then(response => response.data.forEach(item => addItem(item)))
 
 function addItem(item) {
-    const template = document.getElementById("#card-template").content.cloneNode(true);
+    const template = document.getElementById("card-template").content.cloneNode(true);
     template.querySelector('.card-title').innerText = item.title;
     template.querySelector('.card-text').innterText = item.body;
     document.querySelector('#post-list').appendChild(template);
