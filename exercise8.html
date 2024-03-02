@@ -26,23 +26,23 @@
     <script type="text/javascript">
         let nowMoment = moment();
 
-        const birthday ='10/14/1997'
-        let birthdayDate = moment(birthday, 'DD/MM/YYYY');
+        const birthday ='10/14/1997';
+        let birthdayDate = moment(birthday, 'MM/DD/YYYY');
         const daysDifference = nowMoment.diff(birthdayDate, 'days');
 
         let displayBirthday = document.getElementById('daysSinceMyBirthday');
-        displayBirthday.innerText = `${daysDifference} days since ${birthdayDate}`;
+        displayBirthday.innerText = `${daysDifference} days since ${birthdayDate.format('DD/MM/YYYY')}`;
 
         const duration = moment.duration(nowMoment.diff(birthdayDate));
         const years = duration.years();
-        const month = duration.months();
+        const months = duration.months();
         const days = duration.days();
         let fullDisplayBirthday = document.getElementById('daysYearsMonthSinceMyBirthday');
-        fullDisplayBirthday.innerText = `${years} years, ${months} months & ${days} since my date of birth.`
+        fullDisplayBirthday.innerText = `${years} years, ${months} months & ${days} since my date of birth.`;
 
         const closerDateFx = (date1, date2) => {
-            let dateA = moment(date1, "DD/MM/YYYY");
-            let dateB = moment(date2, "DD/MM/YYYY");
+            let dateA = moment(date1, "MM/DD/YYYY");
+            let dateB = moment(date2, "MM/DD/YYYY");
 
             let diffA = nowMoment.diff(dateA, "days");
             let diffB = nowMoment.diff(dateB, "days");
@@ -60,8 +60,8 @@
         closerDate.innerText = closerDateFx('04/05/1997','08/07/2063')
 
         const previousDateFx = (date1, date2) => {
-            let dateA = moment(date1, "DD/MM/YYYY");
-            let dateB = moment(date2, "DD/MM/YYYY");
+            let dateA = moment(date1, "MM/DD/YYYY");
+            let dateB = moment(date2, "MM/DD/YYYY");
 
             if (dateA.isBefore(dateB)){
                 return `The date ${dateA} is before ${dateB}`
@@ -71,13 +71,13 @@
             }
         };
         const previousDate = document.getElementById('previousDate');
-        previousDate.innerText = previousDateFx("09/10/1903", "05,04,2027");
+        previousDate.innerText = previousDateFx("09/10/1903", "05/04/2027");
 
         const londonUTCOffset = 1;
         const timeInLondon = nowMoment.clone().utcOffset(londonUTCOffset);
 
         const londonTime = document.getElementById('londonTime');
-        londonTime.innerText = `${timeInLondon.format('DD/MM/YYYY HH:mm:ss')} is the time in London`;
+        londonTime.innerText = `${timeInLondon.format('MM/DD/YYYY HH:mm:ss')} is the time in London`;
 
 
     </script>
