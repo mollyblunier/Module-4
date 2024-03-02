@@ -6,6 +6,7 @@
     <title>Moments in Time</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 </head>
+
 <body>
     <h3>Days Since My Birthday</h3>
     <div id="daysSinceMyBirthday"></div>
@@ -55,9 +56,28 @@
 
             return `${diffA > diffB ? dateB : dateA} is closer than ${diffA > diffB ? dateA : dateB}`
         };
+        let closerDate = document.getElementById('closerDate');
+        closerDate.innerText = closerDateFx('04/05/1997','08/07/2063')
 
+        const previousDateFx = (date1, date2) => {
+            let dateA = moment(date1, "DD/MM/YYYY");
+            let dateB = moment(date2, "DD/MM/YYYY");
+
+            if (dateA.isBefore(dateB)){
+                return `The date ${dateA} is before ${dateB}`
+            }
+            else {
+                return `The date ${dateB} is before ${dateA}`
+            }
+        };
         const previousDate = document.getElementById('previousDate');
-        previousDate.innerText = previousDateFx("09/10/1903", "05,04,2027")
+        previousDate.innerText = previousDateFx("09/10/1903", "05,04,2027");
+
+        const londonUTCOffset = 1;
+        const timeInLondon = nowMoment.clone().utcOffset(londonUTCOffset);
+
+        const londonTime = document.getElementById('londonTime');
+        londonTime.innerText = `${timeInLondon.format('DD/MM/YYYY HH:mm:ss')} is the time in London`;
 
 
     </script>
